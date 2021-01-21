@@ -1,7 +1,9 @@
+import datetime
+
 from django.urls import path, re_path
 from rest_framework.routers import SimpleRouter
 from vehicle import views
-from vehicle import data_update
+
 
 router = SimpleRouter()
 router.register('stolen_vehicles', views.StolenCarsViewSet)

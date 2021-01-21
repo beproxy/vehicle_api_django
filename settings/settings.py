@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'django_filters',
+    'django_crontab',
     'vehicle',
 ]
 
@@ -125,5 +126,9 @@ STATIC_URL = '/static/'
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
-    'PAGE_SIZE': 10
+    'PAGE_SIZE': 5
 }
+
+CRONJOBS = [
+    ('* * * */1 *', 'vehicle.cron.scheduled_task')
+]
