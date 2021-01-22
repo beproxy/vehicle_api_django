@@ -14,7 +14,7 @@ class MakeModelsSerializer(serializers.ModelSerializer):
         fields = ['model_name',]
 
 
-class StolenVehicleSerializer(serializers.ModelSerializer):
+class StolenVehicleSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = StolenVehicle
         fields = '__all__'

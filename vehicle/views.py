@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from rest_framework import status
+from rest_framework.renderers import AdminRenderer
 from rest_framework.response import Response
 import requests
 
@@ -12,12 +13,14 @@ from vehicle.models import StolenVehicle, VehicleMakes, MakeModels
 
 from vehicle.serializers import StolenVehicleSerializer, MakeModelsSerializer
 
+
 import json
 
 
 class StolenCarsViewSet(ModelViewSet):
     queryset = StolenVehicle.objects.all()
     serializer_class = StolenVehicleSerializer
+    renderer_classes = (AdminRenderer, )
 
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
     search_fields = ['full_name', 'license_plate', 'vin']
@@ -44,7 +47,6 @@ class StolenCarsViewSet(ModelViewSet):
                                                          result.get("Model"),\
                                                          result.get("ModelYear")
         return data
-
 
 
 class DetailsStolenCarsViewSet(ModelViewSet):
