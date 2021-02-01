@@ -19,7 +19,8 @@ import json
 class StolenCarsViewSet(ModelViewSet):
     queryset = StolenVehicle.objects.all()
     serializer_class = StolenVehicleSerializer
-    renderer_classes = [AdminRenderer, XMLRenderer]
+    renderer_classes = [AdminRenderer, XMLRenderer, XLSXRenderer]
+    filename = 'my_export.xlsx'
 
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
     search_fields = ['full_name', 'license_plate', 'vin']
